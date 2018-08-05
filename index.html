@@ -3,19 +3,23 @@
     <head>
     
     <title>Currency Convert</title>
+    
+    <meta charset="utf-8"/>
+        
+    <script type="text/javascript" src="javascript.js"></script>        
     </head>
     
-    <body>
+    <body onload = "process()">
               
         <select id="x">
                     
             <option value="0">Convert From:</option>
                     
-            <option value="1">USD</option>
+            <option value="USD">USD</option>
                     
-            <option value="2">INR</option>
+            <option value="INR">INR</option>
                     
-            <option value="3">EUR</option>
+            <option value="EUR">EUR</option>
                     
         </select>
         
@@ -25,7 +29,7 @@
         
         <input type="text" id="a"><br><br>
         
-        <input type="text" id="b"><br>
+        <p id="b"></p>
         
         <br>
         
@@ -35,11 +39,11 @@
                     
             <option value="0">Convert to:</option>
                     
-            <option value="1">USD</option>
+            <option value="USD">USD</option>
                     
-            <option value="2">INR</option>
+            <option value="INR">INR</option>
                     
-            <option value="3">EUR</option>
+            <option value="EUR">EUR</option>
                     
         </select>
     
