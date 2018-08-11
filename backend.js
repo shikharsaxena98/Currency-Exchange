@@ -10,31 +10,22 @@ var server = http.createServer(function (req, response) {
     response.writeHead(404, {
         "Content-Type": "text/html"
     });
-    response.write("Request Made");
     path = req.url;
     arr = url.parse(path).query;
     ans = querystring(arr);
-    response.write("<br/>")
-    response.write(ans.value1);
-    response.write("<br/>")
-    response.write(ans.curr1);
-    response.write("<br/>")
-    response.write(ans.curr2);
-    response.write("<br/>");
-    var urlforApi = makeUrlForAPI('USD', 'INR');
-    console.log(urlforApi);
-        var obj1;
-        var urlforApi = makeUrlForAPI(ans.curr1, ans.curr2);
-        request(urlforApi, function (err, obj) {
-            obj1 = JSON.parse(obj.body).rates;
-            var value2 = obj1[ans.curr2];
-            value2=value2.toString();
-            console.log("1.Request Completed.");
-            console.log(value2);
-            response.write(value2);
-            response.end();
-        });
-    
+    console.log(ans);
+    var obj1;
+    var urlforApi = makeUrlForAPI(ans.curr1, ans.curr2);
+    request(urlforApi, function (err, obj) {
+        obj1 = JSON.parse(obj.body).rates;
+        var value2 = obj1[ans.curr2];
+        
+        ans.value2=value2*ans.value1;
+        var send=JSON.stringify(ans);
+        response.write(send);
+        response.end();
+    });
+
 
 });
 server.listen(5000);
